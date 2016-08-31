@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://imagepxl.com/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+    <url>
+        <loc>http://imagepxl.com/viral</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>http://imagepxl.com/about</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>http://imagepxl.com/user_agreement</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>http://imagepxl.com/dmca</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>http://imagepxl.com/upload</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+</urlset>

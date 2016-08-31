@@ -1,0 +1,16 @@
+RewriteEngine On
+#
+
+RewriteRule    ^site/([A-Za-z0-9-_.]+)/?$    default.php?first=$1    [NC,L]
+RewriteRule    ^site/([\w-_.]+)/([\w-_.]+)/?$    default.php?first=$1&&second=$2    [NC,L]
+RewriteRule    ^([A-Za-z0-9-]+).php/?$ -  [L]
+
+RewriteRule    ^thumbs/([A-Za-z0-9-.]+)/?$    a_thumb.php?image_id=$1    [NC,L]
+
+RewriteRule    ^([A-Za-z0-9-]+)/([A-Za-z0-9-.]+)/?$    image.php?username=$1&&image_id=$2    [NC,L]
+RewriteRule    ^([A-Za-z0-9-]+)/thumbs/([A-Za-z0-9-.]+)/?$    thumb.php?username=$1&&image_id=$2    [NC,L]
+RewriteRule    ^([A-Za-z0-9-.]+)/?$    a.php?image_id=$1    [NC,L]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ./index.php [L]
