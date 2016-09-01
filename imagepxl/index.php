@@ -28,21 +28,20 @@ else
 include('universal_functions.php');
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
    <head>
       <meta name="description" content="ImagePXL is an image site where you get to share awesome images over a large audience" />
-        <meta name="keywords" content="image, image sharer, images, photo, picture, sharer, upload, uploader" />
-        <title>ImagePXL - Share images over a large audience</title>
-        <script type="text/javascript">
-            startTime = (new Date).getTime();
-        </script>
-        <?php include('required_header.php'); ?>
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+      <meta name="keywords" content="image, image sharer, images, photo, picture, sharer, upload, uploader" />
+      <title>ImagePXL - Share images over a large audience</title>
+      <script type="text/javascript">
+          startTime = (new Date).getTime();
+      </script>
+      <?php include('required_header.php'); ?>
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
       <?php include('code_header.php'); ?>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-        <script type="text/javascript" src="./image_upload.js"></script>
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+      <script type="text/javascript" src="./image_upload.js"></script>
       <script type="text/javascript">
          function change_color()
          {
@@ -191,297 +190,289 @@ include('universal_functions.php');
         </div>
         <div id="errors" ></div>
         <div id="dim" onClick="close_alert_box();"></div>
-        
        <div style="text-align:center;">
            <img src="http://i.imagepxl.com/site/imagePXL_index.png"/>
            <p class="text_color" style="margin-top:-20px;margin-bottom:15px;">ImagePXL "image pixel" is an image site where you get to share awesome images over a large audience</p>
        </div>
       <div class="content" style="margin-top:0px;">
-          
           <div style="padding:15px;">
-<!--                          <div class="index_image_body">
-                              <img class="index_image" id="index_image_0" src="http://i.imagepxl.com/site/index_images/backflip.png"/>
-                              <img class="index_image" id="index_image_1" src="http://i.imagepxl.com/site/index_images/image2.jpg"/>
-                              <img class="index_image" id="index_image_2" src="http://i.imagepxl.com/site/index_images/image3.jpg"/>
-                              <img class="index_image" id="index_image_3" src="http://i.imagepxl.com/site/index_images/image4.jpg"/>
-                          </div>-->
-                            <a class="link title_color" href="http://imagepxl.com/viral">
-                                <span class="title_color" style="margin-bottom:5px;">(Most popular)</span>
-                            </a>
-                          <table style="padding-top:0px;">
-                              <tbody>
-                                  <tr>
-                                      <td id="index_unit_0" ></td>
-                                      <td id="index_unit_1" ></td>
-                                      <td id="index_unit_2" ></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_3" ></td>
-                                      <td id="index_unit_4" ></td>
-                                      <td id="index_unit_5" ></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_6" ></td>
-                                      <td id="index_unit_7" ></td>
-                                      <td id="index_unit_8" ></td>
-                                      <td id="index_unit_9" ></td>
-                                      <td id="index_unit_10" ></td>
-                                      <td id="index_unit_11" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_12" ></td>
-                                      <td id="index_unit_13" ></td>
-                                      <td id="index_unit_14" ></td>
-                                      <td id="index_unit_15" ></td>
-                                      <td id="index_unit_16" ></td>
-                                      <td id="index_unit_17" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_18" ></td>
-                                      <td id="index_unit_19" ></td>
-                                      <td id="index_unit_20" ></td>
-                                      <td id="index_unit_21" ></td>
-                                      <td id="index_unit_22" ></td>
-                                      <td id="index_unit_23" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_24" ></td>
-                                      <td id="index_unit_25" ></td>
-                                      <td id="index_unit_26" ></td>
-                                      <td id="index_unit_27" ></td>
-                                      <td id="index_unit_28" ></td>
-                                      <td id="index_unit_29" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_30" ></td>
-                                      <td id="index_unit_31" ></td>
-                                      <td id="index_unit_32" ></td>
-                                      <td id="index_unit_33" ></td>
-                                      <td id="index_unit_34" ></td>
-                                      <td id="index_unit_35" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_36" ></td>
-                                      <td id="index_unit_37" ></td>
-                                      <td id="index_unit_38" ></td>
-                                      <td id="index_unit_39" ></td>
-                                      <td id="index_unit_40" ></td>
-                                      <td id="index_unit_41" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_42" ></td>
-                                      <td id="index_unit_43" ></td>
-                                      <td id="index_unit_44" ></td>
-                                      <td id="index_unit_45" ></td>
-                                      <td id="index_unit_46" ></td>
-                                      <td id="index_unit_47" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_48" ></td>
-                                      <td id="index_unit_49" ></td>
-                                      <td id="index_unit_50" ></td>
-                                      <td id="index_unit_51" ></td>
-                                      <td id="index_unit_52" ></td>
-                                      <td id="index_unit_53" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_54" ></td>
-                                      <td id="index_unit_55" ></td>
-                                      <td id="index_unit_56" ></td>
-                                      <td id="index_unit_57" ></td>
-                                      <td id="index_unit_58" ></td>
-                                      <td id="index_unit_59" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_60" ></td>
-                                      <td id="index_unit_61" ></td>
-                                      <td id="index_unit_62" ></td>
-                                      <td id="index_unit_63" ></td>
-                                      <td id="index_unit_64" ></td>
-                                      <td id="index_unit_65" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_66" ></td>
-                                      <td id="index_unit_67" ></td>
-                                      <td id="index_unit_68" ></td>
-                                      <td id="index_unit_69" ></td>
-                                      <td id="index_unit_70" ></td>
-                                      <td id="index_unit_71" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_72" ></td>
-                                      <td id="index_unit_73" ></td>
-                                      <td id="index_unit_74" ></td>
-                                      <td id="index_unit_75" ></td>
-                                      <td id="index_unit_76" ></td>
-                                      <td id="index_unit_77" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_78" ></td>
-                                      <td id="index_unit_79" ></td>
-                                      <td id="index_unit_80" ></td>
-                                      <td id="index_unit_81" ></td>
-                                      <td id="index_unit_82" ></td>
-                                      <td id="index_unit_83" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_84" ></td>
-                                      <td id="index_unit_85" ></td>
-                                      <td id="index_unit_86" ></td>
-                                      <td id="index_unit_87" ></td>
-                                      <td id="index_unit_88" ></td>
-                                      <td id="index_unit_89" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_90" ></td>
-                                      <td id="index_unit_91" ></td>
-                                      <td id="index_unit_92" ></td>
-                                      <td id="index_unit_93" ></td>
-                                      <td id="index_unit_94" ></td>
-                                      <td id="index_unit_95" ></td>
-                                  </tr>
-                                  <tr>
-                                      <td id="index_unit_96" ></td>
-                                      <td id="index_unit_97" ></td>
-                                      <td id="index_unit_98" ></td>
-                                      <td id="index_unit_99" ></td>
-                                      <td id="index_unit_100" ></td>
-                                      <td id="index_unit_101" ></td>
-                                  </tr>
-                                  
-                                  
-                                  <tr>
-                                      <td colspan="3">
-                                          <input class="button blue_button" type="button" value="See more" style="width:100%;font-size:16px;" id="index_see_more"/>
-                                      </td>
-                                  </tr>
-                              </tbody>
-                          </table>
+              <a class="link title_color" href="http://imagepxl.com/viral">
+                  <span class="title_color" style="margin-bottom:5px;">(Most popular)</span>
+              </a>
+              <table style="padding-top:0px;">
+                  <tbody>
+                      <tr>
+                          <td id="index_unit_0" ></td>
+                          <td id="index_unit_1" ></td>
+                          <td id="index_unit_2" ></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_3" ></td>
+                          <td id="index_unit_4" ></td>
+                          <td id="index_unit_5" ></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_6" ></td>
+                          <td id="index_unit_7" ></td>
+                          <td id="index_unit_8" ></td>
+                          <td id="index_unit_9" ></td>
+                          <td id="index_unit_10" ></td>
+                          <td id="index_unit_11" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_12" ></td>
+                          <td id="index_unit_13" ></td>
+                          <td id="index_unit_14" ></td>
+                          <td id="index_unit_15" ></td>
+                          <td id="index_unit_16" ></td>
+                          <td id="index_unit_17" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_18" ></td>
+                          <td id="index_unit_19" ></td>
+                          <td id="index_unit_20" ></td>
+                          <td id="index_unit_21" ></td>
+                          <td id="index_unit_22" ></td>
+                          <td id="index_unit_23" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_24" ></td>
+                          <td id="index_unit_25" ></td>
+                          <td id="index_unit_26" ></td>
+                          <td id="index_unit_27" ></td>
+                          <td id="index_unit_28" ></td>
+                          <td id="index_unit_29" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_30" ></td>
+                          <td id="index_unit_31" ></td>
+                          <td id="index_unit_32" ></td>
+                          <td id="index_unit_33" ></td>
+                          <td id="index_unit_34" ></td>
+                          <td id="index_unit_35" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_36" ></td>
+                          <td id="index_unit_37" ></td>
+                          <td id="index_unit_38" ></td>
+                          <td id="index_unit_39" ></td>
+                          <td id="index_unit_40" ></td>
+                          <td id="index_unit_41" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_42" ></td>
+                          <td id="index_unit_43" ></td>
+                          <td id="index_unit_44" ></td>
+                          <td id="index_unit_45" ></td>
+                          <td id="index_unit_46" ></td>
+                          <td id="index_unit_47" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_48" ></td>
+                          <td id="index_unit_49" ></td>
+                          <td id="index_unit_50" ></td>
+                          <td id="index_unit_51" ></td>
+                          <td id="index_unit_52" ></td>
+                          <td id="index_unit_53" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_54" ></td>
+                          <td id="index_unit_55" ></td>
+                          <td id="index_unit_56" ></td>
+                          <td id="index_unit_57" ></td>
+                          <td id="index_unit_58" ></td>
+                          <td id="index_unit_59" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_60" ></td>
+                          <td id="index_unit_61" ></td>
+                          <td id="index_unit_62" ></td>
+                          <td id="index_unit_63" ></td>
+                          <td id="index_unit_64" ></td>
+                          <td id="index_unit_65" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_66" ></td>
+                          <td id="index_unit_67" ></td>
+                          <td id="index_unit_68" ></td>
+                          <td id="index_unit_69" ></td>
+                          <td id="index_unit_70" ></td>
+                          <td id="index_unit_71" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_72" ></td>
+                          <td id="index_unit_73" ></td>
+                          <td id="index_unit_74" ></td>
+                          <td id="index_unit_75" ></td>
+                          <td id="index_unit_76" ></td>
+                          <td id="index_unit_77" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_78" ></td>
+                          <td id="index_unit_79" ></td>
+                          <td id="index_unit_80" ></td>
+                          <td id="index_unit_81" ></td>
+                          <td id="index_unit_82" ></td>
+                          <td id="index_unit_83" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_84" ></td>
+                          <td id="index_unit_85" ></td>
+                          <td id="index_unit_86" ></td>
+                          <td id="index_unit_87" ></td>
+                          <td id="index_unit_88" ></td>
+                          <td id="index_unit_89" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_90" ></td>
+                          <td id="index_unit_91" ></td>
+                          <td id="index_unit_92" ></td>
+                          <td id="index_unit_93" ></td>
+                          <td id="index_unit_94" ></td>
+                          <td id="index_unit_95" ></td>
+                      </tr>
+                      <tr>
+                          <td id="index_unit_96" ></td>
+                          <td id="index_unit_97" ></td>
+                          <td id="index_unit_98" ></td>
+                          <td id="index_unit_99" ></td>
+                          <td id="index_unit_100" ></td>
+                          <td id="index_unit_101" ></td>
+                      </tr>
+                      
+                      
+                      <tr>
+                          <td colspan="3">
+                              <input class="button blue_button" type="button" value="See more" style="width:100%;font-size:16px;" id="index_see_more"/>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
 
           </div>
           <div style="position:absolute;top:0px;right:0px;">
                       
-                          <table style="position:relative;margin:0 auto;padding:15px;">
-                            <tbody>
-                                <tr>
-                                    <td style="vertical-align:top;">
-                                        <table style="margin-right:15px;">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="text-align:center" colspan="2">
-                                                        <p class="title_color">Login</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text_color">Username: </span>
-                                                    </td>
-                                                    <td>
-                                                        <input class="input_box index_input" type="text" maxlength="255" placeholder="Username..." id="login_username"/>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="text_color">Password: </span>
-                                                    </td>
-                                                    <td>
-                                                        <input class="input_box index_input" type="password" maxlength="255" placeholder="Password..." id="login_password" />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" style="text-align:center;">
-                                                        <input class="button red_button" type="button" value="Login" onClick="login();"/>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <img class="load_gif" src="http://i.imagepxl.com/site/load.gif" id="login_load" style="display:none;"/>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td colspan="2" style="text-align:center">
-                                                        <p class="title_color" >Join</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                       <p class="text_color">Username: </p>
-                                                    </td>
-                                                    <td>
-                                                       <input class="input_box index_input" type="text" maxlength="40" placeholder="Username..." id="register_username"/>
-                                                    </td>
-                                                 </tr>
-                                                 <tr>
-                                                    <td>
-                                                       <p class="text_color">Email: </p>
-                                                    </td>
-                                                    <td>
-                                                       <input class="input_box index_input" type="email" maxlength="255" placeholder="Email..." id="register_email"/>
-                                                    </td>
-                                                 </tr>
-                                                 <tr>
-                                                    <td>
-                                                       <p class="text_color">Password: </p>
-                                                    </td>
-                                                    <td>
-                                                       <input class="input_box index_input" type="password" maxlength="255" placeholder="Password..." id="register_password" />
-                                                    </td>
-                                                 </tr>
-                                                <tr>
-                                                    <td colspan="2" style="text-align:center;">
-                                                        <p style="font-size:12px;margin-top:10px;" class="text_color">By joining, you agree to the </p><p onClick="window.open('http://imagepxl.com/user_agreement');" class="username title_color" style="font-size:12px;">User Agreement</p>
-                                                    </td>
-                                                </tr>
-                                                  <tr>
-                                                      <td colspan="2" style="text-align:center;">
-                                                          <input class="button red_button" type="button" value="Join" onClick="register();" />
-                                                      </td>
-                                                  </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <img class="load_gif" src="http://i.imagepxl.com/site/load.gif" id="register_load" style="display:none;"/>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <table id="upload_type_menu" style="margin-top:20px;width:400px;background-color:white;">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="upload_type_menu_item" style="width:50%;border-right:1px solid gray;" onClick="display_computer_upload();" >
-                                                        <div class="upload_type_menu_body">
-                                                            <p class="text_color" style="font-size:12px;">Upload from your computer</p>
-                                                            <img src="http://i.imagepxl.com/site/image_upload_computer.png" style="height:50px;padding-top:10px;" />
-                                                        </div>
-                                                    </td>
-                                                    <td class="upload_type_menu_item" style="width:50%;" onClick="display_url_upload();" >
-                                                        <div class="upload_type_menu_body">
-                                                            <p class="text_color" style="font-size:12px;">Upload from a URL</p>
-                                                            <img src="http://i.imagepxl.com/site/image_upload_url.png" style="height:50px;padding-top:10px;" />
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                         </table>
+              <table style="position:relative;margin:0 auto;padding:15px;">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top;">
+                            <table style="margin-right:15px;">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:center" colspan="2">
+                                            <p class="title_color">Login</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="text_color">Username: </span>
+                                        </td>
+                                        <td>
+                                            <input class="input_box index_input" type="text" maxlength="255" placeholder="Username..." id="login_username"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="text_color">Password: </span>
+                                        </td>
+                                        <td>
+                                            <input class="input_box index_input" type="password" maxlength="255" placeholder="Password..." id="login_password" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align:center;">
+                                            <input class="button red_button" type="button" value="Login" onClick="login();"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <img class="load_gif" src="http://i.imagepxl.com/site/load.gif" id="login_load" style="display:none;"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" style="text-align:center">
+                                            <p class="title_color" >Join</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                           <p class="text_color">Username: </p>
+                                        </td>
+                                        <td>
+                                           <input class="input_box index_input" type="text" maxlength="40" placeholder="Username..." id="register_username"/>
+                                        </td>
+                                     </tr>
+                                     <tr>
+                                        <td>
+                                           <p class="text_color">Email: </p>
+                                        </td>
+                                        <td>
+                                           <input class="input_box index_input" type="email" maxlength="255" placeholder="Email..." id="register_email"/>
+                                        </td>
+                                     </tr>
+                                     <tr>
+                                        <td>
+                                           <p class="text_color">Password: </p>
+                                        </td>
+                                        <td>
+                                           <input class="input_box index_input" type="password" maxlength="255" placeholder="Password..." id="register_password" />
+                                        </td>
+                                     </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align:center;">
+                                            <p style="font-size:12px;margin-top:10px;" class="text_color">By joining, you agree to the </p><p onClick="window.open('http://imagepxl.com/user_agreement');" class="username title_color" style="font-size:12px;">User Agreement</p>
+                                        </td>
+                                    </tr>
+                                      <tr>
+                                          <td colspan="2" style="text-align:center;">
+                                              <input class="button red_button" type="button" value="Join" onClick="register();" />
+                                          </td>
+                                      </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <img class="load_gif" src="http://i.imagepxl.com/site/load.gif" id="register_load" style="display:none;"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table id="upload_type_menu" style="margin-top:20px;width:400px;background-color:white;">
+                                <tbody>
+                                    <tr>
+                                        <td class="upload_type_menu_item" style="width:50%;border-right:1px solid gray;" onClick="display_computer_upload();" >
+                                            <div class="upload_type_menu_body">
+                                                <p class="text_color" style="font-size:12px;">Upload from your computer</p>
+                                                <img src="http://i.imagepxl.com/site/image_upload_computer.png" style="height:50px;padding-top:10px;" />
+                                            </div>
+                                        </td>
+                                        <td class="upload_type_menu_item" style="width:50%;" onClick="display_url_upload();" >
+                                            <div class="upload_type_menu_body">
+                                                <p class="text_color" style="font-size:12px;">Upload from a URL</p>
+                                                <img src="http://i.imagepxl.com/site/image_upload_url.png" style="height:50px;padding-top:10px;" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+             </table>
           </div>
             <script type="text/javascript">
               function initialize_input_boxes()

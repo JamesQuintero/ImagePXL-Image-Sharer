@@ -5,16 +5,8 @@ $allowed="all";
 include('security_checks.php');
 
 
-//gets all the necessary AWS schtuff
-if (!class_exists('S3'))
-    require_once('S3.php');
-if (!defined('awsAccessKey'))
-    define('awsAccessKey', ACCES_KEY);
-if (!defined('awsSecretKey'))
-    define('awsSecretKey', SECRET_KEY);
+include("requiredS3.php");
 
-//creates S3 item with schtuff
-$s3 = new S3(awsAccessKey, awsSecretKey);
 
 $description=clean_string($_POST['description']);
 $username=get_username($_SESSION['id']);
@@ -118,8 +110,8 @@ if(file_exists_server($url))
                         imagejpeg($true_color, $tmp_path, 80);
 
                         //uploads new version and thumbnail to S3
-                        $s3->putObjectFile($tmp_path, "imagepxl.images", $path, S3::ACL_PUBLIC_READ);
-                        $s3->putObjectFile($tmp_path."thumb.jpg", "imagepxl.images", $thumb_path, S3::ACL_PUBLIC_READ);
+                        $s3->putObjectFile($tmp_path, "bucket_name", $path, S3::ACL_PUBLIC_READ);
+                        $s3->putObjectFile($tmp_path."thumb.jpg", "bucket_name", $thumb_path, S3::ACL_PUBLIC_READ);
 
                         $type="jpg";
 
@@ -170,8 +162,8 @@ if(file_exists_server($url))
                         imagepng($true_color, $tmp_path, 9);
 
                         //uploads new version and thumbnail to S3
-                        $s3->putObjectFile($tmp_path, "imagepxl.images", $path, S3::ACL_PUBLIC_READ);
-                        $s3->putObjectFile($tmp_path."thumb.png", "imagepxl.images", $thumb_path, S3::ACL_PUBLIC_READ);
+                        $s3->putObjectFile($tmp_path, "bucket_name", $path, S3::ACL_PUBLIC_READ);
+                        $s3->putObjectFile($tmp_path."thumb.png", "bucket_name", $thumb_path, S3::ACL_PUBLIC_READ);
 
                         imagedestroy($thumb);
                         imagedestroy($true_color);
@@ -215,8 +207,8 @@ if(file_exists_server($url))
                             imagegif($true_color, $tmp_path);
 
                             //uploads true color and thumb to S3
-                            $s3->putObjectFile($tmp_path, "imagepxl.images", $path, S3::ACL_PUBLIC_READ);
-                            $s3->putObjectFile($tmp_path."thumb.gif", "imagepxl.images", $thumb_path, S3::ACL_PUBLIC_READ);
+                            $s3->putObjectFile($tmp_path, "bucket_name", $path, S3::ACL_PUBLIC_READ);
+                            $s3->putObjectFile($tmp_path."thumb.gif", "bucket_name", $thumb_path, S3::ACL_PUBLIC_READ);
 
                             imagedestroy($thumb);
                             imagedestroy($true_color);
@@ -244,8 +236,8 @@ if(file_exists_server($url))
                             imagegif($thumb, $tmp_path."thumb.gif");
 
                             //uploads true color and thumb to S3
-                            $s3->putObjectFile($tmp_path, "imagepxl.images", $path, S3::ACL_PUBLIC_READ);
-                            $s3->putObjectFile($tmp_path."thumb.gif", "imagepxl.images", $thumb_path, S3::ACL_PUBLIC_READ);
+                            $s3->putObjectFile($tmp_path, "bucket_name", $path, S3::ACL_PUBLIC_READ);
+                            $s3->putObjectFile($tmp_path."thumb.gif", "bucket_name", $thumb_path, S3::ACL_PUBLIC_READ);
 
                             imagedestroy($thumb);
 
@@ -323,32 +315,32 @@ if(file_exists_server($url))
                                         if(!$query)
                                         {
                                             $errors="Something went wrong. We are working on fixing it";
-                                            send_mail_error("upload_image_url.php: (5): ", mysql_error());
+                                            log_error("upload_image_url.php: (5): ", mysql_error());
                                         }
                                     }
                                     else
                                     {
                                         $errors="Something went wrong. We are working on fixing it";
-                                        send_mail_error("upload_image_url.php: (4): ", mysql_error());
+                                        log_error("upload_image_url.php: (4): ", mysql_error());
                                     }
                                 }
                             }
                             else
                             {
                                 $errors="Something went wrong. We are working on fixing it";
-                                send_mail_error("upload_image_url.php: (3): ", mysql_error());
+                                log_error("upload_image_url.php: (3): ", mysql_error());
                             }
                         }
                         else
                         {
                             $errors="Something went wrong. We are working on fixing it";
-                            send_mail_error("upload_image_url.php: (2): ", mysql_error());
+                            log_error("upload_image_url.php: (2): ", mysql_error());
                         }
                     }
                     else
                     {
                         $errors="Something went wrong. We are working on fixing it";
-                        send_mail_error("upload_image_url.php: (1): ", mysql_error());
+                        log_error("upload_image_url.php: (1): ", mysql_error());
                     }
                 }
                 
@@ -359,7 +351,7 @@ if(file_exists_server($url))
                     if(!$query)
                     {
                         $errors="Something went wrong. We are working on fixing it";
-                        send_mail_error("upload_image_url.php: (6): ", mysql_error());
+                        log_error("upload_image_url.php: (6): ", mysql_error());
                     }
                 }
             }
@@ -377,4 +369,3 @@ $JSON['image_id']=$new_image_id;
 $JSON['errors']=$errors;
 echo json_encode($JSON);
 exit();
-?>

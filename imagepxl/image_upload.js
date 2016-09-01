@@ -28,6 +28,7 @@ var handleUpload=function(event){
     
     for(var x = 0; x < fileInput.files.length; x++)
     {
+        //less than 1GB
         if(fileInput.files[x].size<10240000)
         {
             data.append('image[]', fileInput.files[x]);

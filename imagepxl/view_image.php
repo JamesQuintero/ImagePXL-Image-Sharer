@@ -4,8 +4,6 @@ include('universal_functions.php');
 $allowed="all";
 include('security_checks.php');
 
-
-
 //gets image data
 $image_id=clean_string($_GET['image_id']);
 $data=get_image_data($image_id);
@@ -37,8 +35,8 @@ else
     $num_images=0;
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
 <html>
    <head>
        <meta name="description" content="<?php echo urlencode($description); ?>" />
@@ -622,9 +620,6 @@ else
                                   </tr>
                               </tbody>
                           </table>
-                          
-                          
-                          
                       </td>
                   </tr>
               </tbody>

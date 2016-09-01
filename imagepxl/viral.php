@@ -7,8 +7,7 @@ include('security_checks.php');
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
    <head>
        <meta name="description" content=" View the 100 most viral images on imagePXL" />
@@ -124,7 +123,6 @@ include('security_checks.php');
                         else
                             var name_html="";
 
-//                        var favorite_html="<span class='text_color' style='font-size:12px;'>"+num_favorites[x]+" favorites</span>";
                         var favorite_html="";
                         var view_html="<span class='text_color' style='font-size:12px;'>"+num_views[x]+" views</span>";
                         var image_info="<table ><tbody><tr><td>"+name_html+"</td></tr><tr><td>"+description_html+"</td></tr><tr><td>"+view_html+"</td></tr><tr><td>"+favorite_html+"</td></tr></tbody></table>";
@@ -155,8 +153,6 @@ include('security_checks.php');
                         else
                             var album_table="";
 
-
-//                        html+="<tr><td style='width:20px;vertical-align:top;'><span class='text_color'>"+((page-1)*25+x+1)+")</span></td><td style='width:150px;padding:10px;padding-right:5px;' ><a class='link' href='http://imagepxl.com/"+image_ids[x]+"' ><img class='image_preview' src='"+thumbnails[x]+"' /></a></td><td style='vertical-align:top;height:100%;display:inline-table;padding:10px;padding-left:5px;'>"+image_info+"</td></tr><tr><td colspan='3'><hr style='margin:0px;padding:0px;'/></td></tr>";
                         html+="<tr><td style='border-bottom:1px solid gray;' ><table style='width:100%;' ><tbody><tr> <td style='width:150px;padding:10px;padding-right:5px;' ><a class='link' href='http://imagepxl.com/"+image_ids[x]+"' ><img class='image_preview' src='"+thumbnails[x]+"' /></a></td><td style='vertical-align:top;height:100%;display:inline-table;padding:10px;padding-left:5px;width:100%;' >"+image_info+"</td><td style='vertical-align:bottom;'> "+album_table+" </td></tr></tbody></table></td></tr>";
                     }
 
@@ -215,15 +211,10 @@ include('security_checks.php');
             }, "json");
         }
 
-        //      function display_top_menu(type)
-        //      {
-        //          if($('#rising'))
-        //      }
-
         $(document).ready(function(){
-         display_top_100(1, 'rising', 'images');
-         change_colors();
-         <?php include('required_jquery.php'); ?>
+             display_top_100(1, 'rising', 'images');
+             change_colors();
+             <?php include('required_jquery.php'); ?>
         });
       </script>
    </head>

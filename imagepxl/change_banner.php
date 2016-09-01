@@ -4,16 +4,7 @@ include('universal_functions.php');
 $allowed="users";
 include('security_checks.php');
 
-//gets all the necessary AWS schtuff
-if (!class_exists('S3'))
-    require_once('S3.php');
-if (!defined('awsAccessKey'))
-    define('awsAccessKey', ACCES_KEY);
-if (!defined('awsSecretKey'))
-    define('awsSecretKey', SECRET_KEY);
-
-//creates S3 item with schtuff
-$s3 = new S3(awsAccessKey, awsSecretKey);
+include("requiredS3.php");
 
 
 //checks if there actually is a photo selected
@@ -56,7 +47,7 @@ if($_FILES['image']['size']!=0)
 
                 $headers=array();
                 $headers['Cache-Control']='max-age=0';
-                $s3->putObjectFile($_FILES['image']['tmp_name'], "imagepxl.images", $path, S3::ACL_PUBLIC_READ, $headers);
+                $s3->putObjectFile($_FILES['image']['tmp_name'], "bucket_name", $path, S3::ACL_PUBLIC_READ, $headers);
 
                 unlink($_FILES['image']['tmp_name']);
 

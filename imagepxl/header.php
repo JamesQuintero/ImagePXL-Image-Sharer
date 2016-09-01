@@ -38,9 +38,6 @@
                                </tr>
                            </tbody>
                        </table>
-                        
-                            
-                        
                    </td>
                    <td>
                        <table id="header_table">
@@ -123,11 +120,6 @@
                </tr>
            </tbody>
        </table>
-       
-       
-      
-      
-      
    </div>
 </div>
 <div class="tool_tip"></div>
@@ -167,8 +159,4 @@
         }, "json");
     });
     
-//    function reset_message_title()
-//    {
-//        document.title="Messages";
-//    }
 </script>

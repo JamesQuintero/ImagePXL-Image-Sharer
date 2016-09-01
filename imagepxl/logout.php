@@ -2,15 +2,6 @@
 @include('init.php');
 include('universal_functions.php');
 
-
-//$type='Desktop';
-//$timestamp=array();
-//$timestamp[0]='offline';
-//$timestamp[1]=$type;
-//$timestamp=implode('|^|*|', $timestamp);
-//mysql_query("UPDATE online SET timestamp='$timestamp' WHERE user_id=$_SESSION[id]");
-//record_logout();
-
 //pauses code to let user get logged out
 //usleep(1000000);
 session_unset();
@@ -27,5 +18,3 @@ if(isset($_COOKIE['acc_id']))
 }
 else
     header("Location: http://imagepxl.com");
-
-?>

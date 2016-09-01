@@ -1,5 +1,7 @@
 <?php
+//pauses to reduce password guessing
 sleep(2);
+
 @include('init.php');
 include('universal_functions.php');
 $allowed="all";
@@ -24,10 +26,8 @@ if(isset($_POST['username'])&&isset($_POST['password']))
         {
             if(strlen($password)<=255)
             {   
-                //uses blowfish to hash the password for verification
-                //salt will be truncated if over 22 characters
-                //    $password=crypt($password, '$2a$07$27cad37e8a5fc13618b5ce35ad2b4d5b97400d63$');
-                $temp_salt="0428ab59c4a50892f6bea0564ccf62a9f99d78b3";
+                //hashes the password
+                $temp_salt=$username."0564ccf62a9f99d78b3";
                 $password=crypt($password, '$6$rounds=5000$'.$temp_salt.'$');
 
                 //check previous logins
@@ -127,4 +127,3 @@ if(isset($_POST['username'])&&isset($_POST['password']))
     else
         echo "One or more fields are empty";
 }
-?>

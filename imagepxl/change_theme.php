@@ -43,4 +43,3 @@ if($theme=='normal'||$theme=='dark'||$theme=='red_black'||$theme=='yellow'||$the
         exit();
     }
 }
-?>

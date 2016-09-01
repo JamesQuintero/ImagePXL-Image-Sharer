@@ -41,19 +41,19 @@ if($image_id!='')
                     if(!$query)
                     {
                         $errors.="Something went wrong. We are working on fixing it";
-                        send_mail_error("undislike_image.php: (4): ", mysql_error());
+                        log_error("undislike_image.php: (4): ", mysql_error());
                     }
                 }
                 else
                 {
                    $errors.="Something went wrong. We are working on fixing it";
-                   send_mail_error("undislike_image.php: (3): ", mysql_error());
+                   log_error("undislike_image.php: (3): ", mysql_error());
                 }
             }
             else
             {
                 $errors.="Something went wrong. We are working on fixing it";
-                send_mail_error("undislike_image.php: (2): ", mysql_error());
+                log_error("undislike_image.php: (2): ", mysql_error());
             }
         }
         else
@@ -62,7 +62,7 @@ if($image_id!='')
     else
     {
         $errors.="Something went wrong. We are working on fixing it";
-        send_mail_error("undislike_image.php: (1): ", mysql_error());
+        log_error("undislike_image.php: (1): ", mysql_error());
     }
 }
 
@@ -72,4 +72,3 @@ $JSON['num_dislikes']=$num_dislikes;
 $JSON['errors']=$errors;
 echo json_encode($JSON);
 exit();
-?>

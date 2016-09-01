@@ -6,8 +6,7 @@ include('security_checks.php');
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
    <head>
       <title>Upload images - ImagePXL</title>
@@ -196,7 +195,6 @@ include('security_checks.php');
                                       </tr>
                                   </tbody>
                               </table>
-                              
                               <div id="computer_upload">
                                     <form method="post" action="upload_image.php" enctype="multipart/form-data" >
                                         <table style="width:100%;">
@@ -386,16 +384,8 @@ include('security_checks.php');
                                       </tr>
                                   </tbody>
                               </table>
-                              
-                              
-                              
-                              
                           </td>
                       </tr>
-                      
-                      
-                      
-                      
                   </tbody>
               </table>
 

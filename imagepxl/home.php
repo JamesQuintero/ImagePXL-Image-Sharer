@@ -5,29 +5,6 @@ $allowed="users";
 include('security_checks.php');
 
 
-////code for facebook share
-//require 'facebook-php/facebook.php';
-//$facebook = new Facebook(array(
-//  'appId'  => '169603043241456',
-//  'secret' => 'fda1a48b04709fa2c385dffbacb90f22',
-//  'cookie' => true,
-//));
-//
-//$userId = $facebook->getUser();
-//
-//$me = null;
-//if ($userId) {
-//  try
-//   {
-//      $me = $facebook->api('/me');
-//      $friends=$facebook->api('/me/friends');
-////     facebook_methods(1, $friends);
-//   }
-//   catch (FacebookApiException $e) {
-//    error_log($e);
-//  }
-//}
-
 $query=mysql_query("SELECT username, num_followers, image_views, profile_views FROM user_data WHERE user_id=$_SESSION[id] LIMIT 1");
 if($query&&mysql_num_rows($query)==1)
 {
@@ -38,8 +15,8 @@ if($query&&mysql_num_rows($query)==1)
     $profile_views=number_format($array[3]);
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
    <head>
       <title>Home</title>
@@ -60,7 +37,7 @@ if($query&&mysql_num_rows($query)==1)
                user_id: user_id
             }, function(output)
             {
-                var image_ids=output.image_ids;
+               var image_ids=output.image_ids;
                var image_exts=output.image_exts;
                var user_ids=output.user_ids;
                var usernames=output.usernames;
@@ -71,10 +48,10 @@ if($query&&mysql_num_rows($query)==1)
                var has_disliked=output.has_disliked;
                var num_views=output.num_views;
                var descriptions=output.descriptions;
-                var type=output.type;
-                var album_ids=output.album_ids;
-                var album_names=output.album_names;
-                var num_album_images=output.num_album_images;
+               var type=output.type;
+               var album_ids=output.album_ids;
+               var album_names=output.album_names;
+               var num_album_images=output.num_album_images;
                var profile_pictures=output.profile_pictures;
                var thumbnails=output.thumbnails;
                var nsfw=output.nsfw;
@@ -179,40 +156,7 @@ if($query&&mysql_num_rows($query)==1)
                change_colors();
             }, "json");
          }
-//         function display_following()
-//         {
-//             $.post('home_query.php',
-//             {
-//                 num:2
-//             }, function(output)
-//             {  
-//                 var following=output.following;
-//                 var profile_pictures=output.profile_pictures;
-//                 var usernames=output.usernames;
-//                 var num_followers=output.num_followers;
-//                 
-//                 
-//                 var html="";
-//                 for(var x = 0; x < following.length; x++)
-//                 {
-//                     var profile_picture="<img src='"+profile_pictures[x]+"' class='small_profile_picture' style='width:50px;height:50px;'/>";
-//                     var username="<span class='title_color' style='font-size:12px;'>"+usernames[x]+"</span>";
-//                     var num_followers_html="<span class='text_color' style='font-size:12px;'>"+num_followers[x]+" followers</span>";
-//                     
-//                     var user_info="<table><tbody><tr><td>"+username+"</td></tr><tr><td>"+num_followers_html+"</td></tr></tbody></table>";
-//                     var body="<table><tbody><tr><td style='vertical-align:top;'>"+profile_picture+"</td><td style='vertical-align:top;'>"+user_info+"</td></tr></tbody></table>";
-//                     html+="<tr><td><div id='home_following_div_"+x+"' class='home_following_div'>"+body+"</div></td></tr>";
-//                 }
-//                 $('#home_following_tbody').html($('#home_following_tbody').html()+html);
-//                 
-//                 for(var x = 0; x < following.length; x++)
-//                 {
-//                     $('#home_following_div_'+x).attr('onClick', "display_images(1, "+following[x]+");");
-//                 }
-//                 
-//                 change_colors();
-//             }, "json");
-//         }
+
          
          $(document).ready(function(){
             display_images(1, -1);
@@ -237,20 +181,6 @@ if($query&&mysql_num_rows($query)==1)
                          <tbody>
                              <tr>
                                  <td style="width:50px;">
-<!--                                     <div class="button red_button" id="home_upload_button" style="width:100px;" onClick="window.location.replace('http://imagepxl.com/upload');">
-                                        <table style="margin:0 auto;position:relative;">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img class="icon" src="https://cdn1.iconfinder.com/data/icons/hamburg/32/photography.png"/>
-                                                    </td>
-                                                    <td>
-                                                        <span>Upload</span>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>-->
                                     <table>
                                         <tbody>
                                             <tr>
@@ -298,102 +228,6 @@ if($query&&mysql_num_rows($query)==1)
                  </td>
              </tr>
             <tr>
-<!--               <td id="home_menu_unit" style="vertical-align:top;border-right:1px solid gray;width:150px;padding-top:15px;padding-right:15px;">
-                   <table>
-                       <tbody>
-                           <tr>
-                               <td>
-                                                        <table style="width:160px;border:1px solid gray;">
-                                                            <tbody>
-                                                                <?php if ($me): ?>
-                                                                    <tr>
-                                                                        <td>
-                                                                           <table >
-                                                                              <tbody>
-                                                                                 <tr>
-                                                                                    <td >
-                                                                                       <img src="http://graph.facebook.com/<?php echo $me['id']; ?>/picture" style="border:1px solid gray;border-radius:3px;"/>
-                                                                                    </td>
-                                                                                     <td>
-                                                                                         <table style="vertical-align:top;">
-                                                                                             <tbody>
-                                                                                                 <tr>
-                                                                                                     <td>
-                                                                                                         <span style="color:blue;font-size:12px;"><?php echo $me['first_name']." ".$me['last_name']; ?></span>
-                                                                                                     </td>
-                                                                                                 </tr>
-                                                                                                 <tr>
-                                                                                                     <td>
-                                                                                                         <span class="text_color" style="font-size:12px;">Tell your friends to come follow you!</span>
-                                                                                                     </td>
-                                                                                                 </tr>
-                                                                                             </tbody>
-                                                                                         </table>
-                                                                                     </td>
-                                                                                 </tr>
-                                                                              </tbody>
-                                                                           </table>
-
-
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="text-align:center;">
-                                                                            <input class="button" type="button" value="Post" onClick="facebook_post();" style="width:50%;"/>
-                                                                        </td>
-                                                                    </tr>
-                                                                <?php else: ?>
-                                                                    <tr>
-                                                                        <td style="text-align:center;">
-                                                                            <span style="color:blue;">Invite your friends!</span>
-                                                                            <img src="http://imagepxl.com/facebook-php/facebook_login_button.png" onClick="facebook_login();" style="cursor:pointer;"/>
-                                                                        </td>
-                                                                    </tr>
-                                                                <?php endif ?>
-                                                            </tbody>
-                                                        </table>
-                               </td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <p class="text_color" style="text-align:center;">Display: </p>
-                                    <table style="margin-top:5px;">
-                                        <tbody id="home_following_tbody">
-                                            <tr>
-                                                <td>
-                                                    <div id="home_following_div" class="home_following_div" onclick="display_images(1, -1);">
-                                                        <table>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td style="vertical-align:top;">
-
-                                                                    </td>
-                                                                    <td style="vertical-align:top;">
-                                                                        <table>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <span class="title_color" style="color: rgb(220, 20, 0);">Everyone</span>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                               </td>
-                           </tr>
-                       </tbody>
-                   </table>
-               </td>-->
-                
-                
                <td id="home_content_unit">
                    <img class="load_gif" id="load_gif" src="http://i.imagepxl.com/site/load.gif"/>
                    <div id="home_page_1">

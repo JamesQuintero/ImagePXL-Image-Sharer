@@ -21,22 +21,15 @@ $num_images=$data['num_images'];
 $last_sign_in=$data['last_sign_in'];
 $date_joined=$data['date_joined'];
 
-add_profile_view($ID);
+// add_profile_view($ID);
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
 <html>
    <head>
        <meta name="description" content="<?php echo $username; ?>" />
       <title><?php echo $username; ?></title>
-      
-      
-      
       <?php include('code_header.php'); ?>
-      
-      
-      
-      
       <script type="text/javascript">
          function change_colors()
          {
@@ -583,9 +576,6 @@ add_profile_view($ID);
                                  </tr>
                              </tbody>
                          </table>
-                         
-                         
-                        
                      </td>
                   </tr>
                   <tr>

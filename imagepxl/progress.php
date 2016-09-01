@@ -6,7 +6,6 @@ session_cache_limiter();
 
 
 $key="upload_progress_upload";
-//echo json_encode( $_SESSION[$key]); 
 if(empty($_SESSION[$key]))
     $percentage=100;
 else
@@ -23,4 +22,3 @@ $JSON=array();
 $JSON['percentage']=$percentage;
 echo json_encode($JSON);
 exit();
-?>

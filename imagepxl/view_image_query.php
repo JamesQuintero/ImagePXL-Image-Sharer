@@ -153,7 +153,7 @@ if($num==1)
             exit();
         }
         else if(!$query)
-            send_mail_error("view_image_query.php: (1:1): ", mysql_error());
+            log_error("view_image_query.php: (1:1): ", mysql_error());
             
     }
 }
@@ -206,7 +206,7 @@ else if($num==2)
                         $descriptions[]=str_replace("'", "\'", $description);
                     }
                     else if(!$query)
-                        send_mail_error("view_image_query.php: (2:2): ", mysql_error());
+                        log_error("view_image_query.php: (2:2): ", mysql_error());
                 }
 
                 $JSON=array();
@@ -218,7 +218,7 @@ else if($num==2)
 
             }
             else if(!$query)
-                send_mail_error("view_image_query.php: (2:1): ", mysql_error());
+                log_error("view_image_query.php: (2:1): ", mysql_error());
         }
     }
 }
@@ -239,7 +239,7 @@ else if($num==3)
             else
             {
                 echo "Something went wrong. We are working on fixing it";
-                send_mail_error("view_image_query.php: (3:1): ", mysql_error());
+                log_error("view_image_query.php: (3:1): ", mysql_error());
             }
         }
         else
@@ -273,7 +273,7 @@ else if($num==4)
                     $album_names[]=$array[0];
                 }
                 else if(!$query)
-                    send_mail_error("view_image_query.php: (4:2): ", mysql_error());
+                    log_error("view_image_query.php: (4:2): ", mysql_error());
             }
 
             $temp_album_names=$album_names;
@@ -300,7 +300,7 @@ else if($num==4)
                 $current_album_id=$array[0];
             }
             else if(!$query)
-                send_mail_error("view_image_query.php: (4:3): ", mysql_error());
+                log_error("view_image_query.php: (4:3): ", mysql_error());
 
             $JSON=array();
             $JSON['album_ids']=$temp_albums;
@@ -310,7 +310,7 @@ else if($num==4)
             exit();
         }
         else if(!$query)
-            send_mail_error("view_image_query.php: (4:1): ", mysql_error());
+            log_error("view_image_query.php: (4:1): ", mysql_error());
     }
 }
 
@@ -360,25 +360,21 @@ else if($num==5)
                         if(!$query)
                         {
                             echo "Something went wrong. We are working on fixing it";
-                            send_mail_error("view_image_query.php: (5:3): ", mysql_error());
+                            log_error("view_image_query.php: (5:3): ", mysql_error());
                         }
                     }
                     else if(!$query)
                     {
                         echo "Something went wrong. We are working on fixing it";
-                        send_mail_error("view_image_query.php: (5:2): ", mysql_error());
+                        log_error("view_image_query.php: (5:2): ", mysql_error());
                     }
                 }
             }
             else if(!$query)
             {
                 echo "Something went wrong. We are working on fixing it";
-                send_mail_error("view_image_query.php: (5:1): ", mysql_error());
+                log_error("view_image_query.php: (5:1): ", mysql_error());
             }
-
-
-
-
 
 
             if($album_id=='')
@@ -389,7 +385,7 @@ else if($num==5)
                 else
                 {
                     echo "Something went wrong. We are working on fixing it";
-                    send_mail_error("view_image_query.php: (5:4): ", mysql_error());
+                    log_error("view_image_query.php: (5:4): ", mysql_error());
                 }
             }
 
@@ -425,17 +421,17 @@ else if($num==5)
                         else
                         {
                             echo "Something went wrong. We are working on fixing it";
-                            send_mail_error("view_image_query.php: (5:7): ", mysql_error());
+                            log_error("view_image_query.php: (5:7): ", mysql_error());
                         }
                     }
                     else
                     {
                         echo "Something went wrong. We are working on fixing it";
-                        send_mail_error("view_image_query.php: (5:6): ", mysql_error());
+                        log_error("view_image_query.php: (5:6): ", mysql_error());
                     }
                 }
                 else
-                    send_mail_error("view_image_query.php: (5:5): ", "got here");
+                    log_error("view_image_query.php: (5:5): ", "got here");
             }
         }
         else
@@ -562,4 +558,3 @@ else if($num==6)
     echo json_encode($JSON);
     exit();
 }
-?>

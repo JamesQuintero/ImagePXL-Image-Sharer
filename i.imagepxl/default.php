@@ -9,13 +9,10 @@ if(isset($_GET['first']))
     else
         $second="";
 
-    //cloudfront CDN for imagepxl.images S3 bucket
-    $remoteImage = "http://d3jfgmuje0a9yk.cloudfront.net/default/".$first.$second;
+    //cloudfront CDN for bucket_name S3 bucket
+    $remoteImage = "http://CLOUDFRONT_ID.cloudfront.net/default/".$first.$second;
     $imginfo = getimagesize($remoteImage);
     header("Content-type: $imginfo[mime]");
     readfile($remoteImage);
     
 }
-else
-    echo "Got here default";
-?>

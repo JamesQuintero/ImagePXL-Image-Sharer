@@ -66,7 +66,7 @@ if($image_id!='')
                 if(!$query)
                 {
                     $errors.="Something went wrong. We are working on fixing it";
-                    send_mail_error("like_comment.php: (1): ", mysql_error());
+                    log_error("like_comment.php: (1): ", mysql_error());
                 }
             }
        }
@@ -76,7 +76,7 @@ if($image_id!='')
     else
     {
        $errors.="Something went wrong. We are working on fixing it";
-         send_mail_error("like_comment.php: (2): ", mysql_error());
+         log_error("like_comment.php: (2): ", mysql_error());
     }
 }
 
@@ -86,5 +86,3 @@ $JSON['num_likes']=$num_likes;
 $JSON['num_dislikes']=$num_dislikes;
 echo json_encode($JSON);
 exit();
-
-?>

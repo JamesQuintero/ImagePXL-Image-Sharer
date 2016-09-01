@@ -22,8 +22,7 @@ else
     $sort=1;
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
    <head>
       <title>Search imagePXL</title>
@@ -255,7 +254,6 @@ else
    <body>
       <?php if(isset($_SESSION['id'])) include('header.php'); else include('index_header.php'); ?>
       <div class="content" style="margin-top:20px;padding:10px;">
-          
           <table style="width:100%;">
               <tbody>
                   <tr>
@@ -303,7 +301,6 @@ else
                   </tr>
               </tbody>
           </table>
-         
       </div>
       <?php include('footer.php'); ?>
    </body>
@@ -315,7 +312,7 @@ else
             {
                 var key = (e.keyCode ? e.keyCode : e.which);
 
-                //right arrow
+                //enter key
                 if(key == '13')
                 {
                     search();

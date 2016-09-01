@@ -22,7 +22,7 @@ if($query&&mysql_num_rows($query)==1)
         else
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("set_profile_picture.php: (2): ", mysql_error());
+            log_error("set_profile_picture.php: (2): ", mysql_error());
         }
     }
     else
@@ -33,6 +33,5 @@ if($query&&mysql_num_rows($query)==1)
 else
 {
     echo "Something went wrong. We are working on fixing it";
-    send_mail_error("set_profile_picture.php: (1): ", mysql_error());
+    log_error("set_profile_picture.php: (1): ", mysql_error());
 }
-?>

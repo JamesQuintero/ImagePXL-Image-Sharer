@@ -189,7 +189,7 @@ if($num==1)
         }
     }
     else
-      send_mail_error("profile_query.php: (1): ", mysql_error());
+      log_error("profile_query.php: (1): ", mysql_error());
    
     $JSON=array();
     $JSON['images']=$temp_images;
@@ -253,7 +253,7 @@ else if($num==2)
                     $num_images[]=0;
             }
             else if(!$query)
-                send_mail_error("profile_query.php: (2:2): ", mysql_error());
+                log_error("profile_query.php: (2:2): ", mysql_error());
         }
         
         
@@ -268,7 +268,7 @@ else if($num==2)
         
     }
     else if(!$query)
-        send_mail_error("profile_query.php: (2:1): ", mysql_error());
+        log_error("profile_query.php: (2:1): ", mysql_error());
 }
 
 //gets favorites
@@ -357,7 +357,7 @@ else if($num==3)
             }
         }
         else if(!$query)
-            send_mail_error("profile_query.php: (3:1): ", mysql_error());
+            log_error("profile_query.php: (3:1): ", mysql_error());
 
         $JSON=array();
         $JSON['images']=$temp_favorites;
@@ -375,4 +375,3 @@ else if($num==3)
         exit();
     }
 }
-?>

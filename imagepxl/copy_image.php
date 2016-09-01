@@ -4,14 +4,7 @@ include('universal_functions.php');
 $allowed="users";
 include('security_checks.php');
 
-//gets all the necessary AWS schtuff
-if (!class_exists('S3'))
-    require_once('S3.php');
-if (!defined('awsAccessKey'))
-    define('awsAccessKey', ACCES_KEY);
-if (!defined('awsSecretKey'))
-    define('awsSecretKey', SECRET_KEY);
-$s3 = new S3(awsAccessKey, awsSecretKey);
+include("requiredS3.php");
 
 
 $image_id=clean_string($_POST['image_id']);
@@ -56,8 +49,8 @@ if($image_id!='')
                 $new_thumb=$_SESSION['username']."/thumbs/$name.".$ext;
 
                 //copies it to new path
-                $s3->copyObject("imagepxl.images", $prev, "imagepxl.images", $new, S3::ACL_PUBLIC_READ);
-                $s3->copyObject("imagepxl.images", $prev_thumb, "imagepxl.images", $new_thumb, S3::ACL_PUBLIC_READ);
+                $s3->copyObject("bucket_name", $prev, "bucket_name", $new, S3::ACL_PUBLIC_READ);
+                $s3->copyObject("bucket_name", $prev_thumb, "bucket_name", $new_thumb, S3::ACL_PUBLIC_READ);
 
                 //if album isn't valid
                 if(mysql_num_rows(mysql_query("SELECT * FROM albums WHERE album_id='$album' AND user_id=$_SESSION[id] LIMIT 1"))==0)
@@ -108,20 +101,20 @@ if($image_id!='')
 
                                     $query=mysql_query("UPDATE albums SET image_ids='$image_ids', image_exts='$image_exts', updated='".get_date()."' WHERE album_id='$album'");
                                     if(!$query)
-                                        send_mail_error("copy_image.php: (6): ", mysql_error());
+                                        log_error("copy_image.php: (6): ", mysql_error());
                                 }
                                 else
-                                    send_mail_error("copy_image.php: (5): ", mysql_error());
+                                    log_error("copy_image.php: (5): ", mysql_error());
                             }
                         }
                         else
-                            send_mail_error("copy_image.php: (4): ", mysql_error());
+                            log_error("copy_image.php: (4): ", mysql_error());
                     }
                     else
-                        send_mail_error("copy_image.php: (3): ", mysql_error());
+                        log_error("copy_image.php: (3): ", mysql_error());
                 }
                 else
-                    send_mail_error("copy_image.php: (2): ", mysql_error());
+                    log_error("copy_image.php: (2): ", mysql_error());
             }
             else
                 echo "You can't copy your own images";
@@ -129,7 +122,7 @@ if($image_id!='')
         else
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("copy_image.php: (1): ", mysql_error());
+            log_error("copy_image.php: (1): ", mysql_error());
         }
     }
     else
@@ -137,4 +130,3 @@ if($image_id!='')
 }
 else
     echo "Empty image id"
-?>

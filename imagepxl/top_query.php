@@ -146,7 +146,7 @@ if($content_type=='images')
                 }
             }
             else if(!$query)
-                send_mail_error("top_query.php: (1): ", mysql_error());
+                log_error("top_query.php: (1): ", mysql_error());
         }
         else
         {
@@ -259,7 +259,6 @@ if($content_type=='images')
         $JSON['has_favorited']=$has_favorited;
         $JSON['num_favorites']=$num_favorites;
         $JSON['thumbnails']=$thumbnails;
-        
         $JSON['album_ids']=$album_ids;
         $JSON['album_names']=$album_names;
         $JSON['num_album_images']=$num_album_images;
@@ -334,4 +333,3 @@ else if($content_type=='users')
         exit();
     }
 }
-?>

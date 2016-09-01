@@ -1,6 +1,7 @@
 <?php
-include('init.php');
+@include('init.php');
 include('universal_functions.php');
+
 ?>
 
 <!DOCTYPE html>

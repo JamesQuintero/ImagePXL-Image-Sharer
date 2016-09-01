@@ -5,16 +5,7 @@ $allowed="users";
 include('security_checks.php');
 
 
-//gets all the necessary AWS schtuff
-if (!class_exists('S3'))
-    require_once('S3.php');
-if (!defined('awsAccessKey'))
-    define('awsAccessKey', ACCES_KEY);
-if (!defined('awsSecretKey'))
-    define('awsSecretKey', SECRET_KEY);
-
-//creates S3 item with schtuff
-$s3 = new S3(awsAccessKey, awsSecretKey);
+include("requiredS3.php");
 
 
 $image_id=clean_string($_POST['image_id']);
@@ -76,9 +67,7 @@ if($query&&mysql_num_rows($query)==1)
             imagejpeg($thumb, $temp_path, 80);
 
             //updates newly created thumbnail
-//            $headers=array();
-//            $headers['Cache-Control']='max-age=10';
-            $s3->putObjectFile($temp_path, "imagepxl.images", $new_path, S3::ACL_PUBLIC_READ);
+            $s3->putObjectFile($temp_path, "bucket_name", $new_path, S3::ACL_PUBLIC_READ);
 
             //deletes temp photo
             imagedestroy($thumb);
@@ -103,7 +92,7 @@ if($query&&mysql_num_rows($query)==1)
             imagepng($thumb, $temp_path, 9);
 
             //updates newly created thumbnail
-            $s3->putObjectFile($temp_path, "imagepxl.images", $new_path, S3::ACL_PUBLIC_READ);
+            $s3->putObjectFile($temp_path, "bucket_name", $new_path, S3::ACL_PUBLIC_READ);
 
             //deletes temp photo
             imagedestroy($thumb);
@@ -126,7 +115,7 @@ if($query&&mysql_num_rows($query)==1)
             imagegif($thumb, $temp_path);
 
             //updates newly created thumbnail
-            $s3->putObjectFile($temp_path, "imagepxl.images", $new_path, S3::ACL_PUBLIC_READ);
+            $s3->putObjectFile($temp_path, "bucket_name", $new_path, S3::ACL_PUBLIC_READ);
 
             //deletes temp photo
             imagedestroy($thumb);
@@ -136,8 +125,7 @@ if($query&&mysql_num_rows($query)==1)
         else
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("set_thumbnail.php: (1): ", mysql_error());
+            log_error("set_thumbnail.php: (1): ", mysql_error());
         }
     }
 }
-?>

@@ -46,25 +46,25 @@ if($num==1)
                     else
                     {
                         echo "Something went wrong. We are working on fixing it";
-                        send_mail_error("follow.php: (4): ", mysql_error());
+                        log_error("follow.php: (4): ", mysql_error());
                     }
                 }
                 else
                 {
                     echo "Something went wrong. We are working on fixing it";
-                    send_mail_error("follow.php: (3): ", mysql_error());
+                    log_error("follow.php: (3): ", mysql_error());
                 }
             }
             else
             {
                 echo "Something went wrong. We are working on fixing it";
-                send_mail_error("follow.php: (2): ", mysql_error());
+                log_error("follow.php: (2): ", mysql_error());
             }
         }
         else
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("follow.php: (1): ", mysql_error());
+            log_error("follow.php: (1): ", mysql_error());
         }
     }
     else
@@ -111,28 +111,27 @@ else if($num==2)
                     else
                     {
                         echo "Something went wrong. We are working on fixing it";
-                        send_mail_error("follow.php: (8): ", mysql_error());
+                        log_error("follow.php: (8): ", mysql_error());
                     }
                 }
                 else
                 {
                     echo "Something went wrong. We are working on fixing it";
-                    send_mail_error("follow.php: (7): ", mysql_error());
+                    log_error("follow.php: (7): ", mysql_error());
                 }
             }
             else
             {
                 echo "Something went wrong. We are working on fixing it";
-                send_mail_error("follow.php: (6): ", mysql_error());
+                log_error("follow.php: (6): ", mysql_error());
             }
         }
         else
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("follow.php: (5): ", mysql_error());
+            log_error("follow.php: (5): ", mysql_error());
         }
     }
     else
         echo "Invalid user ID";
 }
-?>

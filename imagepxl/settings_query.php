@@ -19,7 +19,7 @@ if($num==1)
         else
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("settings_query.php: (1:1): ", mysql_error());
+            log_error("settings_query.php: (1:1): ", mysql_error());
         }
     }
 }
@@ -29,19 +29,11 @@ else if($num==2)
 {
     if(isset($_SESSION['id']))
     {
-        //gets all the necessary AWS schtuff
-        if (!class_exists('S3'))
-            require_once('S3.php');
-        if (!defined('awsAccessKey'))
-            define('awsAccessKey', ACCES_KEY);
-        if (!defined('awsSecretKey'))
-            define('awsSecretKey', SECRET_KEY);
-        $s3 = new S3(awsAccessKey, awsSecretKey);
+        include("requiredS3.php");
         
         $password=clean_string($_POST['password']);
 
-        //encrypts password
-        $temp_salt="0428ab59c4a50892f6bea0564ccf62a9f99d78b3";
+        $temp_salt=$_SESSION['username']."0564ccf62a9f99d78b3";
         $password=crypt($password, '$6$rounds=5000$'.$temp_salt.'$');
         
         $error=false;
@@ -54,14 +46,14 @@ else if($num==2)
             if(!$query)
             {
                 $error=true;
-                send_mail_error("settings_query.php: (2:1): ", mysql_error());
+                log_error("settings_query.php: (2:1): ", mysql_error());
             }
             
             $query=mysql_query("DELETE FROM albums WHERE user_id=$_SESSION[id]");
             if(!$query)
             {
                 $error=true;
-                send_mail_error("settings_query.php: (2:2): ", mysql_error());
+                log_error("settings_query.php: (2:2): ", mysql_error());
             }
             
             $query=mysql_query("SELECT image_id, ext FROM images WHERE user_id=$_SESSION[id]");
@@ -78,21 +70,21 @@ else if($num==2)
                 
                 for($x = 0; $x < sizeof($image_ids); $x++)
                 {
-                    $s3->deleteObject("imagepxl.images", $_SESSION['username']."/$image_ids[$x].$image_exts[$x]");
-                    $s3->deleteObject("imagepxl.images", $_SESSION['username']."/thumbs/$image_ids[$x].$image_exts[$x]");
+                    $s3->deleteObject("bucket_name", $_SESSION['username']."/$image_ids[$x].$image_exts[$x]");
+                    $s3->deleteObject("bucket_name", $_SESSION['username']."/thumbs/$image_ids[$x].$image_exts[$x]");
                 }
             }
             else
             {
                 $error=true;
-                send_mail_error("settings_query.php: (2:3): ", mysql_error());
+                log_error("settings_query.php: (2:3): ", mysql_error());
             }
             
             $query=mysql_query("DELETE FROM images WHERE user_id=$_SESSION[id]");
             if(!$query)
             {
                 $error=true;
-                send_mail_error("settings_query.php: (2:4): ", mysql_error());
+                log_error("settings_query.php: (2:4): ", mysql_error());
             }
             
             $query=mysql_query("SELECT following FROM user_data WHERE user_id=$_SESSION[id] LIMIT 1");
@@ -120,7 +112,7 @@ else if($num==2)
             if(!$query)
             {
                 $error=true;
-                send_mail_error("settings_query.php: (2:5): ", mysql_error());
+                log_error("settings_query.php: (2:5): ", mysql_error());
             }
             
             
@@ -128,7 +120,7 @@ else if($num==2)
             if(!$query)
             {
                 $error=true;
-                send_mail_error("settings_query.php: (2:6): ", mysql_error());
+                log_error("settings_query.php: (2:6): ", mysql_error());
             }
             
             //logs user out
@@ -165,8 +157,7 @@ else if($num==3)
         else
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("settings_query.php: (3:1): ", mysql_error());
+            log_error("settings_query.php: (3:1): ", mysql_error());
         }
     }
 }
-?>

@@ -11,6 +11,7 @@ if(strlen($description)<=200)
    if(!$query)
    {
       //error code
+	   	echo "Something went wrong";
+	   	log_error("change_description.php: ", mysql_error());
    }
 }
-?>

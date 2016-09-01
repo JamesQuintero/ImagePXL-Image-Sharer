@@ -9,11 +9,7 @@ if(isset($_GET['image_id']))
 
     if($image_id!='banner')
     {
-        //cloudfront CDN for imagepxl.images S3 bucket
-//        if(!isset($_GET['username']))
-//            $username='unassociated';
-        
-        $remoteImage = "http://d3jfgmuje0a9yk.cloudfront.net/$username/$image_id";
+        $remoteImage = "http://CLOUDFRONT_ID.cloudfront.net/$username/$image_id";
 
     
         //if trying to display image
@@ -93,4 +89,3 @@ if(isset($_GET['image_id']))
         }
     }
 }
-?>

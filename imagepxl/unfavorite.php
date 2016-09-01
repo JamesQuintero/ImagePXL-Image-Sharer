@@ -42,26 +42,25 @@ if($image_id!='')
                     if(!$query)
                     {
                         echo "Something went wrong. We are working on fixing it";
-                        send_mail_error("unfavorite.php: (4): ", mysql_error());
+                        log_error("unfavorite.php: (4): ", mysql_error());
                     }
                 }
                 else if(!$query)
                 {
                     echo "Something went wrong. We are working on fixing it";
-                    send_mail_error("unfavorite.php: (3): ", mysql_error());
+                    log_error("unfavorite.php: (3): ", mysql_error());
                 }
             }
             else
             {
                 echo "Something went wrong. We are working on fixing it";
-                send_mail_error("unfavorite.php: (2): ", mysql_error());
+                log_error("unfavorite.php: (2): ", mysql_error());
             }
         }
     }
     else if(!$query)
     {
         echo "Something went wrong. We are working on fixing it";
-        send_mail_error("unfavorite.php: (1): ", mysql_error());
+        log_error("unfavorite.php: (1): ", mysql_error());
     }
 }
-?>

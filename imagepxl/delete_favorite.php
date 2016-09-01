@@ -1,7 +1,8 @@
 <?php
-//include stuff
-
+@include("init.php");
 include('universal_functions.php');
+$allowed="users";
+include("security_checks.php");
 
 $image_id=clean_string($_POST['image_id']);
 
@@ -22,10 +23,11 @@ if($query&&mysql_num_rows($query)==1)
    if(!$query)
    {
       //error code
+      log_error("delete_favorite.php: (2): ", mysql_error());
    }
 }
 else
 {
    //error code
+   log_error("delete_favorite.php: (2): ", mysql_error());
 }
-?>

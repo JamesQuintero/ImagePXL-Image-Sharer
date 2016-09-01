@@ -196,9 +196,7 @@ function get_user_colors($user_id)
              $main_text_color=$colors[2];
              $text_color=$colors[3];
          }
-         
       }
-      
    }
    else
    {
@@ -525,75 +523,7 @@ function user_id_terminated($user_id)
             return true;
     }
 }
-//records login
-function record_login()
-{
-//    //gets all the necessary AWS schtuff
-//    if (!class_exists('S3'))
-//        require_once('S3.php');
-//    if (!defined('awsAccessKey'))
-//        define('awsAccessKey', ACCES_KEY);
-//    if (!defined('awsSecretKey'))
-//        define('awsSecretKey', SECRET_KEY);
-//
-//    //creates S3 item with schtuff
-//    $s3 = new S3(awsAccessKey, awsSecretKey);
-//    
-//    $file_names=get_file_names($_SESSION['id']);
-//    $other_file_names=$file_names[3];
-//    
-//    //gets file stuff
-//    $path="users/$_SESSION[id]/files/other/$other_file_names[0].txt";
-//    $value=md5(uniqid(rand()));
-//    $tmp_path="/var/www/tmp_files/$value.txt";
-//    $s3->getObject('redlay.users', $path, $tmp_path);
-//    $contents=file_get_contents($tmp_path);
-//    $contents=explode("\n", $contents);
-//    
-//    
-//    $contents[]=get_date().' | '.$_SERVER['HTTP_X_FORWARDED_FOR'];
-//    
-//    
-//    $contents=implode("\n", $contents);
-//    file_put_contents($tmp_path, $contents);
-//    $s3->putObjectFile($tmp_path, "redlay.users", $path, S3::ACL_PUBLIC_READ);
-//    unlink($tmp_path);
-}
 
-//records logout
-function record_logout()
-{
-//    //gets all the necessary AWS schtuff
-//    if (!class_exists('S3'))
-//        require_once('S3.php');
-//    if (!defined('awsAccessKey'))
-//        define('awsAccessKey', ACCES_KEY);
-//    if (!defined('awsSecretKey'))
-//        define('awsSecretKey', SECRET_KEY);
-//
-//    //creates S3 item with schtuff
-//    $s3 = new S3(awsAccessKey, awsSecretKey);
-//    
-//    $file_names=get_file_names($_SESSION['id']);
-//    $other_file_names=$file_names[3];
-//    
-//    //gets file stuff
-//    $path="users/$_SESSION[id]/files/other/$other_file_names[1].txt";
-//    $value=md5(uniqid(rand()));
-//    $tmp_path="/var/www/tmp_files/$value.txt";
-//    $s3->getObject('redlay.users', $path, $tmp_path);
-//    $contents=file_get_contents($tmp_path);
-//    $contents=explode("\n", $contents);
-//    
-//    
-//    $contents[]=get_date().' | '.$_SERVER['HTTP_X_FORWARDED_FOR'];
-//    
-//    
-//    $contents=implode("\n", $contents);
-//    file_put_contents($tmp_path, $contents);
-//    $s3->putObjectFile($tmp_path, "redlay.users", $path, S3::ACL_PUBLIC_READ);
-//    unlink($tmp_path);
-}
 function get_date()
 {
     $date=time();
@@ -668,10 +598,7 @@ function get_time_since($timestamp, $timezone)
             
             $ago=$days." ".$hours;
         }
-//        else if($new_time>=7200)
-//            $ago=number_format((int)($new_time/3600),0)." hours ".number_format(((int)($new_time%3600)/60))." minutes ago";
-//        else if($new_time>=3600&&$new_time<7200)
-//            $ago="1 hour and ".number_format(((int)($new_time%3600)/60))." minutes ago";
+
         else if($new_time>=7200)
             $ago=number_format((int)($new_time/3600),0)." hours ago";
         else
@@ -710,7 +637,7 @@ function sendAWSEmail($to, $subject, $message)
 
     if (!$response->isOK())
     {
-        send_mail_error("sendAWSEmail(): ", "Something went wrong when sending an email.");
+        log_error("sendAWSEmail(): ", "Something went wrong when sending an email.");
         // handle error
         return false;
     }
@@ -721,7 +648,7 @@ function get_email_from()
 {
     return "imagepxl@imagepxl.com";
 }
-function send_mail_error($error, $second_error)
+function log_error($error, $second_error)
 {
     require 'aws-sdk-for-php-master/sdk.class.php';
     
@@ -734,7 +661,7 @@ function send_mail_error($error, $second_error)
     $amazonSes->verify_email_address($from);
 
     $response = $amazonSes->send_email($from,
-        array('ToAddresses' => array('jamesaquint@gmail.com')),
+        array('ToAddresses' => array('ERROR_EMAIL')),
         array(
             'Subject.Data' => $error,
             'Body.Text.Data' => $second_error,
@@ -745,116 +672,6 @@ function send_mail_error($error, $second_error)
     {
         "Well I'm screwed";
     }
-}
-function send_mail_alert($ID, $information)
-{
-    require 'aws-sdk-for-php-master/sdk.class.php';
-    
-    
-    //gets the email of the user to
-    $query=mysql_query("SELECT email FROM users WHERE id=$ID LIMIT 1");
-    if($query&&mysql_num_rows($query)==1)
-    {
-        $array=mysql_fetch_row($query);
-        $email=$array[0];
-
-
-        $user_name=get_user_name($_SESSION['id']);
-
-        if($information[0]=="comment")
-        {
-            $query=mysql_query("SELECT post_ids, comments FROM content WHERE user_id=$information[2] LIMIT 1");
-            if($query&&mysql_num_rows($query)==1)
-            {
-                $array=mysql_fetch_row($query);
-                $post_ids=explode('|', $array[0]);
-                $comments=explode('|^|*|', $array[1]);
-                
-                $index=-1;
-                for($x = 0; $x < sizeof($post_ids); $x++)
-                {
-                    if($post_ids[$x]==$information[1])
-                        $index=$x;
-                }
-                
-                if($index!=-1)
-                {
-                    $comments[$index]=explode('|%|&|', $comments[$index]);
-                    $comment=end($comments[$index]);
-                    $temp="\"$comment\".";
-                }
-                else
-                    $temp="";
-            }
-            else
-                $temp="";
-            
-            $subject="Comment on your post";
-            $message=$user_name." commented on your post. $temp http://www.redlay.com/view_post.php?post_id=$information[1]&&profile_id=$information[2]";
-        }
-            
-        else if($information[0]=="comment_like")
-        {
-            $subject="Your comment was liked";
-            $message=$user_name." liked your comment on this post. http://www.redlay.com/view_post.php?post_id=$information[1]&&profile_id=$information[2]";
-        }
-        else if($information[0]=="comment_dislike")
-        {
-            $subject="Your comment was disliked";
-            $message=$user_name." disliked your comment on this post. http://www.redlay.com/view_post.php?post_id=$information[1]&&profile_id=$information[2]";
-        }
-        
-        else if($information[0]=="photo_like")
-        {
-            $subject="Your photo was liked";
-            $message=$user_name." liked your photo. http://www.redlay.com/view_photo.php?user_id=$ID&&picture_id=$information[1]&&type=user";
-        }
-        else if($information[0]=="photo_dislike")
-        {
-            $subject="Your photo was disliked";
-            $message=$user_name." disliked your photo. http://www.redlay.com/view_photo.php?user_id=$ID&&picture_id=$information[1]&&type=user";
-        }
-        else if($information[0]=="like_photo_comment")
-        {
-            $subject="Your comment on a photo was liked";
-            $message=$user_name." liked your comment on this photo. http://www.redlay.com/view_photo.php?user_id=$information[2]&&picture_id=$information[1]&&type=$information[3]";
-        }
-        else if($information[0]=="dislike_photo_comment")
-        {
-            $subject="Your comment on a photo was disliked";
-            $message=$user_name." disliked your comment on this photo. http://www.redlay.com/view_photo.php?user_id=$information[2]&&picture_id=$information[1]&&type=$information[3]";
-        }
-        else
-        {
-            $subject="New alert";
-            $message=$information;
-        }
-
-
-        $from=get_email_from();
-        
-        $array=array();
-        $array['key']=ACCES_KEY;
-        $array['secret']=SECRET_KEY;
-        $amazonSes = new AmazonSES($array);
-        $amazonSes->verify_email_address($from);
-
-        $response = $amazonSes->send_email($from,
-            array('ToAddresses' => array($email)),
-            array(
-                'Subject.Data' => $subject,
-                'Body.Text.Data' => $message,
-            )
-        );
-
-        if (!$response->isOK())
-        {
-            send_mail_error("send_mail_alert(): ", "Something went wrong when sending alert email");
-            // handle error
-        }
-    }
-    else
-        send_mail_error(mysql_error());
 }
 //checks if current user is following $user_id
 function user_following($user_id)
@@ -947,10 +764,6 @@ function convert_number($n)
     if(!is_numeric($n)) return false;
 
     // now filter it;
-//    if($n>1000000000000) return round(($n/1000000000000),1).' trillion';
-//    else if($n>1000000000) return round(($n/1000000000),1).' billion';
-//    else if($n>1000000) return round(($n/1000000),1).' million';
-//    else if($n>1000) return round(($n/1000),1).' thousand';
 
     return number_format($n);
 }
@@ -1092,7 +905,7 @@ function add_view($image_id)
             }
         }
         else
-            send_mail_error("universal_functions.php: (add_view()): ", mysql_error());
+            log_error("universal_functions.php: (add_view()): ", mysql_error());
     }
     
     
@@ -1207,6 +1020,7 @@ function add_profile_view($user_id)
     }
 }
 
+//determines if gif is an animated gif
 function is_animated($filename)
 {
     $filecontents=file_get_contents($filename);
@@ -1283,4 +1097,3 @@ function get_current_theme()
         return $array[0];
     }
 }
-?>

@@ -7,7 +7,7 @@ include('security_checks.php');
 $image_id=clean_string($_POST['image_id']);
 $comment=clean_string($_POST['comment']);
 
-sleep(2);
+// sleep(2);
 if($comment!='')
 {
     if($image_id!='')
@@ -104,20 +104,20 @@ if($comment!='')
                                 if(!$query)
                                 {
                                     echo "Something went wrong. We are working on fixing it";
-                                    send_mail_error("comment.php: (4): ", mysql_error());
+                                    log_error("comment.php: (4): ", mysql_error());
                                 }
                             }
                             else if(!$query)
                             {
                                 echo "Something went wrong. We are working on fixing it";
-                                send_mail_error("comment.php: (3): ", mysql_error());
+                                log_error("comment.php: (3): ", mysql_error());
                             }
                         }
                     }
                     else 
                     {
                         echo "Something went wrong. We are working on fixing it";
-                        send_mail_error("comment.php: (2): ", mysql_error());
+                        log_error("comment.php: (2): ", mysql_error());
                     }
                }
                else
@@ -126,7 +126,7 @@ if($comment!='')
             else
             {
                echo "Something went wrong. We are working on fixing it";
-                send_mail_error("comment.php: (1): ", mysql_error());       
+                log_error("comment.php: (1): ", mysql_error());       
             }
         }
         else
@@ -137,4 +137,3 @@ if($comment!='')
 }
 else
     echo "Comment can't be empty";
-?>

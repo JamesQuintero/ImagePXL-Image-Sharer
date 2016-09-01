@@ -11,5 +11,3 @@ if($top<=0)
 {
     mysql_query("UPDATE customization SET banner_top='$top' WHERE user_id=$_SESSION[id]");
 }
-
-?>

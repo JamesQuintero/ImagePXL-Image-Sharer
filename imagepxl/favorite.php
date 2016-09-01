@@ -50,13 +50,13 @@ if(isset($_POST['image_id']))
                     if(!$query)
                     {
                         echo "Something went wrong. We are working on fixing it";
-                        send_mail_error("favorite.php: (4): ", mysql_error());
+                        log_error("favorite.php: (4): ", mysql_error());
                     }
                 }
                 else
                 {
                     echo "Something went wrong. We are working on fixing it";
-                    send_mail_error("favorite.php: (3): ", mysql_error());
+                    log_error("favorite.php: (3): ", mysql_error());
                 }
             }
             else
@@ -66,13 +66,12 @@ if(isset($_POST['image_id']))
         else if(!$query)
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("favorite.php: (2): ", mysql_error());
+            log_error("favorite.php: (2): ", mysql_error());
         }
     }
     else if(!$query)
     {
         echo "Something went wrong. We are working on fixing it";
-        send_mail_error("favorite.php: (1): ", mysql_error());
+        log_error("favorite.php: (1): ", mysql_error());
     }
 }
-?>

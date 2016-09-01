@@ -53,7 +53,7 @@ if($image_id!='')
             if(!$query)
             {
                 $errors.="Something went wrong. We are working on fixing it";
-                send_mail_error("undislike_comment.php: (2): ", mysql_error());
+                log_error("undislike_comment.php: (2): ", mysql_error());
             }
         }
         else
@@ -62,7 +62,7 @@ if($image_id!='')
     else if(!$query)
     {
         $errors.="Something went wrong. We are working on fixing it";
-        send_mail_error("undislike_comment.php: (1): ", mysql_error());
+        log_error("undislike_comment.php: (1): ", mysql_error());
     }
     else
         $errors.="Image doesn't exist";
@@ -74,4 +74,3 @@ $JSON['num_likes']=$num_likes;
 $JSON['num_dislikes']=$num_dislikes;
 echo json_encode($JSON);
 exit();
-?>

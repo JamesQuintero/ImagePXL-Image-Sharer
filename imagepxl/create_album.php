@@ -33,19 +33,19 @@ if($album_name!='')
                 else
                 {
                     echo "Something went wrong. We are working on fixing it";
-                    send_mail_error("create_album.php: (3): ", mysql_error());
+                    log_error("create_album.php: (3): ", mysql_error());
                 }
             }
             else
             {
                 echo "Something went wrong. We are working on fixing it";
-                send_mail_error("create_album.php: (2): ", mysql_error());
+                log_error("create_album.php: (2): ", mysql_error());
             }
         }
         else
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("create_album.php: (1): ", mysql_error());
+            log_error("create_album.php: (1): ", mysql_error());
         }
     }
     else
@@ -53,6 +53,3 @@ if($album_name!='')
 }
 else
     echo "Album name can't be empty";
-
-
-?>

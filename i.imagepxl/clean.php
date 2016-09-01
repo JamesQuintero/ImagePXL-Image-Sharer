@@ -1,6 +1,9 @@
 <?php
 @include('init.php');
 
+//updated viewcount
+
+
 $files=scandir("./views");
 
 //gets rid of "." and ".."
@@ -72,4 +75,3 @@ for($x = 0; $x < sizeof($files); $x++)
 }
 
 print_r($final_files);
-?>

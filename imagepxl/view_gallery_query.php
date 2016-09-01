@@ -139,7 +139,7 @@ if($num==1)
         exit();
     }
     else if(!$query)
-        send_mail_error("view_gallery_query.php: (1:1): ", mysql_error());
+        log_error("view_gallery_query.php: (1:1): ", mysql_error());
     
     //script only gets here if error
     $JSON=array();
@@ -162,4 +162,3 @@ if($num==1)
     echo json_encode($JSON);
     exit();
 }
-?>

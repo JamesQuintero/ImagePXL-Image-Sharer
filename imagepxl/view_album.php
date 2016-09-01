@@ -42,7 +42,6 @@ if(isset($_GET['image_id']))
 }
 else
 {
-//    add_view($image_ids[0]);
     $image_id=$image_ids[0];
     $current_index=0;
     $current_page=0;
@@ -51,8 +50,8 @@ else
 
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
 <html>
    <head>
        <meta name="description" content="<?php echo urlencode($album_name); ?>" />
@@ -99,13 +98,11 @@ else
                         $('#arrow_left').attr({'class': 'arrow_body_disabled', 'onClick': ''});
                     else
                         $('#arrow_left').attr({'onClick': "window.location.replace('http://imagepxl.com/album/<?php echo $album_id; ?>="+prev_page_image+"');", 'class': 'arrow_body'}).show();
-//                        $('#arrow_left').attr({'onClick': "left_page()", 'class': 'arrow_body'}).show();
 
                     if(last_page)
                         $('#arrow_right').attr({'class': 'arrow_body_disabled', 'onClick': ''});
                     else
                         $('#arrow_right').attr({'onClick': "window.location.replace('http://imagepxl.com/album/<?php echo $album_id; ?>="+next_page_image+"');", 'class': 'arrow_body'}).show();
-//                        $('#arrow_right').attr({'onClick': "right_page()", 'class': 'arrow_body'}).show();
 
 
                     for(var x = 0; x < images.length; x++)
@@ -113,14 +110,12 @@ else
                         if(images[x]!='')
                         {
                            $('#image_list_unit_'+x).html("<div class='album_image_outside'><a class='link' href='http://imagepxl.com/album/<?php echo $album_id ?>="+images[x]+"' ><img class='small_image' style='width:75px;' id='album_image_"+x+"' src='http://i.imagepxl.com/<?php echo $username; ?>/thumbs/"+images[x]+"."+image_exts[x]+"' /></a></div>");
-//                           $('#album_image_'+x).attr('onClick', "change_image("+x+");");
                         }
                         else
                            $('#image_list_unit_'+x).html("");
                     }
 
                     change_image(current_index);
-                    
                  
              }, "json");
          }
@@ -656,16 +651,12 @@ else
                             //if reached end and isn't last page
                             if(temp_index>=images.length&&last_page==false)
                             {
-    //                            current_index=0;
-    //                            current_page++;
-    //                            fill_image_list();
                                     window.location.replace("http://imagepxl.com/album/<?php echo $album_id ?>="+next_page_image);
                             }
                             else
                             {
                                 if(images[temp_index]!=undefined&&images[temp_index]!='')
                                     window.location.replace("http://imagepxl.com/album/<?php echo $album_id ?>="+images[temp_index]);
-    //                                change_image(temp_index);
                             }
                         }
                     }
@@ -681,16 +672,11 @@ else
                                 //if not on page 0
                                 if(current_page>0)
                                 {
-                                    //puts current index to last image
-    //                                current_index=10;
-    //                                current_page--;
-    //                                fill_image_list();
                                         window.location.replace("http://imagepxl.com/album/<?php echo $album_id ?>="+prev_page_image);
                                 }
                             }
                             else
                                 window.location.replace("http://imagepxl.com/album/<?php echo $album_id ?>="+images[current_index-1]);
-    //                            change_image(current_index-1);
                         }
                     }
                     

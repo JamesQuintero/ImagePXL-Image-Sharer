@@ -35,19 +35,19 @@ if($query&&mysql_num_rows($query)==1)
                 else
                 {
                     echo "Something went wrong. We are working on fixing it";
-                    send_mail_error("delete_album.php: (4): ", mysql_error());
+                    log_error("delete_album.php: (4): ", mysql_error());
                 }
             }
             else
             {
                 echo "Something went wrong. We are working on fixing it";
-                send_mail_error("delete_album.php: (3): ", mysql_error());
+                log_error("delete_album.php: (3): ", mysql_error());
             }
         }
         else
         {
             echo "Something went wrong. We are working on fixing it";
-            send_mail_error("delete_album.php: (2): ", mysql_error());
+            log_error("delete_album.php: (2): ", mysql_error());
         }
     }
     else
@@ -56,6 +56,5 @@ if($query&&mysql_num_rows($query)==1)
 else
 {
     echo "Something went wrong. We are working on fixing it";
-    send_mail_error("delete_album.php: (1): ", mysql_error());
+    log_error("delete_album.php: (1): ", mysql_error());
 }
-?>
